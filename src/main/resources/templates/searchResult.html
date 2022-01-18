@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search Result</title>
+</head>
+<body>
+    <section>
+        <h1>Search result for <span data-th-text="${searchTerm}"></span></h1>
+    </section>
+    <section  data-th-if="${books} == null">
+        <h1>No results found</h1>
+    </section>
+    <section data-th-if="${books} != null">
+        <ul data-th-object="${book}">
+            <li data-th-each="*{bt: {bookTitle}">
+                <a data-th-src="@{*{workId}}">
+                    <span data-th-text="${bt}"></span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <button type="button"><a href="/index"></a></button>
+    </section>
+</body>
+</html>
