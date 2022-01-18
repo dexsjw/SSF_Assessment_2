@@ -11,11 +11,22 @@ public class Book {
     private String excerpt;
     private boolean cached;
 
+    // constructor
+    public Book() {
+
+    }
+    
+    public Book(String bookTitle, String description, String excerpt) {
+        this.bookTitle = bookTitle;
+        this.description = description;
+        this.excerpt = excerpt;
+    }
+    
     // methods
     public static Book create(JsonObject jo) {
         final Book b = new Book();
         b.setBookTitle(jo.getString("title"));
-        b.setWorkId(jo.getString("key"));
+        b.setWorkId(jo.getString("key").replace("works","book"));
         return b;
     }
 

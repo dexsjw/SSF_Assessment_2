@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Detail</title>
+</head>
+<body>
+    <section>
+        <h1>About</h1>
+    </section>
+    <section data-th-object="${bookDetail}">
+        <div data-th-if="*{not #lists.isEmpty(bookTitle)}">Title: <span data-th-text="*{bookTitle}"></span></div>
+        <div data-th-if="*{not #lists.isEmpty(description)}">Description: <span data-th-text="*{description}"></span></div>
+        <div data-th-if="*{not #lists.isEmpty(excerpt)}">Excerpt: <span data-th-text="*{excerpt}"></span></div>
+        <div data-th-if="*{#lists.isEmpty(bookTitle)}">Title: <span>Title not found</span></div>
+        <div data-th-if="*{#lists.isEmpty(description)}">Description: <span>Description not found</span></div>
+        <div data-th-if="*{#lists.isEmpty(excerpt)}">Excerpt: <span>Excerpt not found</span></div>
+    </section>
+    <section>
+        <button type="button"><a href="/">Seach for another book</a></button>
+    </section>
+</body>
+</html>
