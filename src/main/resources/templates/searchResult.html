@@ -12,11 +12,11 @@
         <h1 data-th-if="${#lists.isEmpty(books)}">No results found</h1>
     </section>
     <section data-th-if="${books} != null">
-        <ul>
+        <ol>
             <li data-th-each="b: ${books}">
                 <a data-th-href="${b.workId}" data-th-text="${b.bookTitle}"></a>
             </li>
-        </ul>
+        </ol>
     </section>
     <section>
         <button type="button"><a href="/">Back</a></button>
