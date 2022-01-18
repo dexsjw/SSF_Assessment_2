@@ -8,22 +8,19 @@
 </head>
 <body>
     <section>
-        <h1>Search result for <span data-th-text="${searchTerm}"></span></h1>
-    </section>
-    <section  data-th-if="${books} == null">
-        <h1>No results found</h1>
+        <h1 data-th-if="${not #lists.isEmpty(books)}">Search result for <span data-th-text="${searchTerm}"></span></h1>
+        <h1 data-th-if="${#lists.isEmpty(books)}">No results found</h1>
     </section>
     <section data-th-if="${books} != null">
-        <ul data-th-object="${book}">
-            <li data-th-each="*{bt: {bookTitle}">
-                <a data-th-src="@{*{workId}}">
-                    <span data-th-text="${bt}"></span>
-                </a>
+        <ul>
+            <li data-th-each="b: ${books}">
+                <a data-th-href="${b.workId}" data-th-text="${b.bookTitle}"></a>
+                <span data-th-text="${b.workId}"></span>
             </li>
         </ul>
     </section>
     <section>
-        <button type="button"><a href="/index"></a></button>
+        <button type="button"><a href="/">Back</a></button>
     </section>
 </body>
 </html>

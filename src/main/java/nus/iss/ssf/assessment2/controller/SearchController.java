@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,18 +24,9 @@ public class SearchController {
     private BookService bookSvc;
 
     @GetMapping
-    public String searchBook(@RequestParam(required = true) String searchTerm, @ModelAttribute Book book, Model model) {
+    public String searchBook(@RequestParam(required = true) String searchTerm, Model model) {
         List<Book> books = bookSvc.search(searchTerm);
-/*         List<String> bookTitle = new ArrayList<>();
-        List<String> bookUrl = new ArrayList<>();
-
-        // to use stream method later
-        for (Book b: books) {
-            bookTitle.add(book.getBookTitle());
-            bookUrl.add(book.getWorkId());
-        } */
         model.addAttribute("searchTerm", searchTerm);
-        model.addAttribute("book", book);
         model.addAttribute("books", books);
         return "searchResult";
     }

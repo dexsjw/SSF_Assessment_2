@@ -1,5 +1,7 @@
 package nus.iss.ssf.assessment2.model;
 
+import jakarta.json.JsonObject;
+
 public class Book {
 
     private String bookTitle;
@@ -9,6 +11,13 @@ public class Book {
     private String excerpt;
     private boolean cached;
 
+    // methods
+    public static Book create(JsonObject jo) {
+        final Book b = new Book();
+        b.setBookTitle(jo.getString("title"));
+        b.setWorkId(jo.getString("key"));
+        return b;
+    }
 
     // setters and getters
     public void setBookTitle(String bookTitle) {
